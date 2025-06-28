@@ -132,11 +132,6 @@ const admin = [
     "password": "123"
   }
 ];
-employees.forEach(element => {
-  console.log(element);
-  
-});
-
 export const setLocalStorage = ()=>{
     localStorage.setItem("employees",JSON.stringify(employees))
     localStorage.setItem("admin",JSON.stringify(admin))
