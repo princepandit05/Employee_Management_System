@@ -3,14 +3,13 @@ import './App.css'
 import Login from './Components/Auth/Login'
 import Employee from './Components/Dashboard/EmployeeDashboard'
 import AdminDasboard from './Components/Dashboard/AdminDasboard'
+import { AuthContext } from './Context/AuthProvider'
 
 
 function App() {
   
   const [user,setUser] = useState(null)
-
-  // const Authdata = useContext(AuthContext)
-  // console.log(Authdata); 
+  
 
   const handleLogin = (email,passwoard)=>{
     if(email == "admin@me.com" && passwoard == "123")

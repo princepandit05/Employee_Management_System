@@ -4,14 +4,15 @@ import { getLocalStorage, setLocalStorage } from '../utlils/LocalStorage'
 export const  AuthContext = createContext()
 
 const AuthProvider = ({children}) => {
-  const setdata = setLocalStorage()
-  console.log(setdata);
   
-  const data = getLocalStorage()
+  const [userdata,setUserdata]=useState(null)
 
-  console.log("=================>",data)
+  const {employees,admin} = getLocalStorage()
+  setUserdata({employees,admin})
+  
+
   return (
-   <AuthContext.Provider>
+   <AuthContext.Provider value={userdata}>
     {children}
    </AuthContext.Provider>
   )
