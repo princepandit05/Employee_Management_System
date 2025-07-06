@@ -9,19 +9,27 @@ import { AuthContext } from './Context/AuthProvider'
 function App() {
   
   const [user,setUser] = useState(null)
-  
+  const [logeedUsserdata,setLoggedUserdata]=useState(null)
 
-  const handleLogin = (email,passwoard)=>{
-    if(email == "admin@me.com" && passwoard == "123")
-    {
-      setUser('admin')
-    }
-     else if(email == "user@me.com" && passwoard == "123")
-    {
-      setUser('employee')
-    }
-    else{
-      alert("invailed Email")
+  const Authdata = useContext(AuthContext)
+  
+  const handleLogin = (email, password) => {
+    if (email === "admin@me.com" && password === "123") {
+      setUser('admin');
+      localStorage.setItem('loggedUserdata', JSON.stringify({ role: 'admin' }));
+    } else if (Authdata) {
+      const empEmail = Authdata.employees.find(
+        (e) => email === e.email && password === e.password
+      );
+      if (empEmail) {
+        setUser('employee');
+        setLoggedUserdata(empEmail);
+        localStorage.setItem('loggedUserdata', JSON.stringify({ role: 'employee' }));
+      } else {
+        alert("Invalid Email or Password");
+      }
+    } else {
+      alert("Invalid Email");
     }
   }
  
@@ -29,7 +37,7 @@ function App() {
     <>
       {!user ?  <Login handleLogin={handleLogin}/>: null}
       {user == 'admin'? <AdminDasboard/>:null}
-      {user == 'employee'? <Employee/> : null}
+      {user == 'employee'? <Employee data = {logeedUsserdata}/> : null}
     </>
   )
 }

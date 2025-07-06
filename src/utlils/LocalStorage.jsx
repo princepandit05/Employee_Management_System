@@ -1,6 +1,8 @@
+
 const employees = [
   {
     "id": 1,
+    "firstName": "Aarav",
     "email": "employee1@example.com",
     "password": "123",
     "tasks": [
@@ -34,10 +36,17 @@ const employees = [
         "date": "2025-06-15",
         "category": "Web Development"
       }
-    ]
+    ],
+    "taskNumbers": {
+      "active": 1,
+      "newTask": 1,
+      "completed": 1,
+      "failed": 1
+    }
   },
   {
     "id": 2,
+    "firstName": "Vihaan",
     "email": "employee2@example.com",
     "password": "123",
     "tasks": [
@@ -61,16 +70,30 @@ const employees = [
         "date": "2025-06-16",
         "category": "Meetings"
       }
-    ]
+    ],
+    "taskNumbers": {
+      "active": 1,
+      "newTask": 1,
+      "completed": 1,
+      "failed": 0
+    }
   },
   {
     "id": 3,
+    "firstName": "Ishaan",
     "email": "employee3@example.com",
     "password": "123",
-    "tasks": []
+    "tasks": [],
+    "taskNumbers": {
+      "active": 0,
+      "newTask": 0,
+      "completed": 0,
+      "failed": 0
+    }
   },
   {
     "id": 4,
+    "firstName": "Ananya",
     "email": "employee4@example.com",
     "password": "123",
     "tasks": [
@@ -84,10 +107,17 @@ const employees = [
         "date": "2025-06-17",
         "category": "Design"
       }
-    ]
+    ],
+    "taskNumbers": {
+      "active": 1,
+      "newTask": 0,
+      "completed": 0,
+      "failed": 0
+    }
   },
   {
     "id": 5,
+    "firstName": "Diya",
     "email": "employee5@example.com",
     "password": "123",
     "tasks": [
@@ -121,9 +151,16 @@ const employees = [
         "date": "2025-06-15",
         "category": "Research"
       }
-    ]
+    ],
+    "taskNumbers": {
+      "active": 1,
+      "newTask": 1,
+      "completed": 1,
+      "failed": 1
+    }
   }
 ];
+
 
 const admin = [
   {
@@ -136,7 +173,7 @@ export const setLocalStorage = ()=>{
     localStorage.setItem("employees",JSON.stringify(employees))
     localStorage.setItem("admin",JSON.stringify(admin))
 }
-setLocalStorage()
+
 export const getLocalStorage = ()=>{
    const employees = JSON.parse(localStorage.getItem('employees'))
    const admin = JSON.parse(localStorage.getItem('admin'))
